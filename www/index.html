@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+    <!--
+        必要时在以下 META 标记中自定义内容安全策略。将 "unsafe-inline" 添加到 default-src 以启动内联 JavaScript。
+      有关详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkID=617521
+    -->
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+        
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <title>AngularJSToDo</title>
+        <script src="cordova.js"></script>
+        <script src="scripts/platformOverrides.js"></script>
+        <script src="scripts/angular.min.js"></script>
+        <script src="scripts/angular-resource.min.js"></script>
+    </head>
+<body ng-app="xPlat">
+    <section id="todoapp" ng-controller="ToDoCtrl">
+        <header id="header">
+            <div id="headerBand"></div>
+            <input id="new-todo" placeholder="What needs to be done?" ng-text-change="addToDo()" ng-model="newToDoText" autofocus>
+        </header>
+        <section id="main">
+            <div id="todo-list">
+                <div class="templateWrapper" ng-repeat="toDoItem in todos">
+                    <div class="templateContainer">
+                        <input class="templateTitle" ng-class="{crossedOut: toDoItem.done}" type="text" ng-text-change="changeToDoText(toDoItem)" ng-model="toDoItem.text" />
+                        <h3 class="templateAddress">{{toDoItem.address}}</h3>
+                        <button class="templateLeft templateToggle" ng-class="{'checked': toDoItem.done, 'unchecked': !toDoItem.done}" ng-mousedown="toggleToDoDone(toDoItem)"></button>
+                        <button class="templateLeft templateRemove" ng-click="removeToDo(toDoItem)"></button>
+                    </div>
+                    <div class="templateBorder"></div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <script src="scripts/index.js"></script>
+    <script src="scripts/services.js"></script>
+    <script src="scripts/controllers.js"></script>
+    <script src="scripts/directives.js"></script>
+</body>
+</html>
